@@ -4,6 +4,8 @@ dotenv.config({
     path: './.env'
 })
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import helmet from "helmet";
 import cors from "cors";
 import authRoutes from "./routes/auth/auth.routes.js"
@@ -19,7 +21,14 @@ global.db = db;
 
 import swaggerUi from "swagger-ui-express";
 import { readFile } from 'fs/promises';
-const swaggerDocument = JSON.parse(await readFile(new URL('./services/swagger.json', import.meta.url)));
+// const swaggerDocument = JSON.parse(await readFile(new URL('./services/swagger.json', import.meta.url)));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Read swagger.json from services folder
+const swaggerPath = path.join(__dirname, "services/swagger.json");
+const swaggerDocument = JSON.parse(await readFile(swaggerPath, "utf8"));
+
 
 // Create an express app
 const app = express();
