@@ -11,11 +11,5 @@
             "src": "/(.*)",
             "dest": "app.js"
         }
-    ],
-    "rewrites": [
-        {
-            "source": "/api-docs/:path*",
-            "destination": "/api-docs/:path*"
-        }
     ]
 }
