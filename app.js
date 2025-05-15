@@ -26,7 +26,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Read swagger.json from services folder
-const swaggerPath = path.join(__dirname, "services/swagger.json");
+const swaggerPath = path.join(__dirname, "services", "swagger.json");
 const swaggerDocument = JSON.parse(await readFile(swaggerPath, "utf8"));
 
 
@@ -68,5 +68,5 @@ app.get("/", (req, res) => {
 //     console.log(`⚙️  Server is running on port ${PORT}`);
 // })
 
-// FOR VERCEL 
+// FOR VERCEL
 export default app;
